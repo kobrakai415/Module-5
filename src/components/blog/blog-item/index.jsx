@@ -3,6 +3,7 @@ import { Card } from "react-bootstrap";
 import BlogAuthor from "../blog-author";
 import { Link } from "react-router-dom";
 import "./styles.css";
+
 export default class BlogItem extends Component {
   render() {
     const { title, cover, author, _id } = this.props;
