@@ -54,7 +54,7 @@ export default class NewBlogPost extends Component {
         let formData = new FormData()
         formData.append("blogCover", this.state.cover)
 
-        const post = await fetch(`${apiUrl}/${id}/uploadCover`,
+        const post = await fetch(`${apiUrl}/blogposts/${id}/uploadCover`,
           {
             method: "POST", 
             body:formData,
