@@ -30,10 +30,10 @@ export default class NewBlogPost extends Component {
 
   submitForm1 = async (e) => {
     const data = this.state
-    const apiUrl = process.env.REACT_APP_API_URL
+    // const apiUrl = process.env.REACT_APP_API_URL
 
     try {
-      const results = await fetch(`${apiUrl}blogposts`, {
+      const results = await fetch(`https://kai-firstbackend.herokuapp.com/blogposts`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

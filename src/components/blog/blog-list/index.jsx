@@ -15,8 +15,7 @@ export default class BlogList extends Component {
 
   fetchPosts = async () => {
     try {
-    const apiUrl = process.env.REACT_APP_API_URL
-    const resp = await fetch(`${apiUrl}/blogposts`)
+    d
     const data = await resp.json()
     console.log(resp)
 
