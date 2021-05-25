@@ -4,11 +4,13 @@ import { withRouter } from "react-router";
 import BlogAuthor from "../../components/blog/blog-author";
 import posts from "../../data/posts.json";
 import "./styles.css";
+
 class Blog extends Component {
   state = {
     blog: {},
     loading: true,
   };
+  
   componentDidMount() {
     const { id } = this.props.match.params;
     console.log(posts);

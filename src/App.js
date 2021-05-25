@@ -5,6 +5,7 @@ import Home from "./views/home";
 import Blog from "./views/blog";
 import NewBlogPost from "./views/new";
 import { BrowserRouter, HashRouter, Route } from "react-router-dom";
+
 const Router =
   process.env.NODE_ENV === "production" ? HashRouter : BrowserRouter;
 function App() {
