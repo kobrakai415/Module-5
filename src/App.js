@@ -4,13 +4,14 @@ import Footer from "./components/footer";
 import Home from "./views/home";
 import Blog from "./views/blog";
 import NewBlogPost from "./views/new";
-import { BrowserRouter, HashRouter, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
-const Router =
-  process.env.NODE_ENV === "production" ? HashRouter : BrowserRouter;
+// const Router =
+//   process.env.NODE_ENV === "production" ? HashRouter : BrowserRouter;
+
 function App() {
   return (
-    <Router basename="/">
+    <Router>
       <NavBar />
       <Route path="/" exact component={Home} />
       <Route path="/blog/:id" exact component={Blog} />
