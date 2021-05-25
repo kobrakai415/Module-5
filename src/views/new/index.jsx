@@ -29,14 +29,15 @@ export default class NewBlogPost extends Component {
   }
 
   submitForm1 = async (e) => {
-    console.log(this.state.cover)
+
     const data = this.state
-    
     console.log(data)
+
+    const apiUrl = process.env.REACT_APP_API_URL
 
     try {
 
-      const results = await fetch("http://localhost:3001/blogposts", {
+      const results = await fetch(`${apiUrl}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -57,7 +58,7 @@ export default class NewBlogPost extends Component {
         let formData = new FormData()
         formData.append("blogCover", this.state.cover)
 
-        const post = await fetch(`http://localhost:3001/blogposts/${id}/uploadCover`,
+        const post = await fetch(`${apiUrl}/${id}/uploadCover`,
           {
             method: "POST", 
             body:formData,
