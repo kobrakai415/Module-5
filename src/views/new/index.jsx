@@ -37,7 +37,7 @@ export default class NewBlogPost extends Component {
 
     try {
 
-      const results = await fetch(`${apiUrl}`, {
+      const results = await fetch(`${apiUrl}/blogposts`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
