@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Row, Col } from "react-bootstrap";
 import BlogItem from "../blog-item";
+
+
 export default class BlogList extends Component {
 
   state = {
@@ -18,8 +20,7 @@ export default class BlogList extends Component {
     const apiUrl = process.env.REACT_APP_API_URL
     const resp = await fetch(`${apiUrl}/blogposts`)
     const data = await resp.json()
-    console.log(resp)
-
+  
     this.setState({posts: data})
 
     } catch (error) {
@@ -31,7 +32,7 @@ export default class BlogList extends Component {
     return (
       <Row>
         {this.state.posts && this.state.posts.map((post) => (
-          <Col md={4} style={{ marginBottom: 50 }}>
+          <Col md={4} key={post._id} style={{ marginBottom: 50 }}>
             <BlogItem key={post._id} {...post} />
           </Col>
         ))}

@@ -98,7 +98,7 @@ export default class NewBlogPost extends Component {
             <ReactQuill
               id="content"
               value={this.state.content}
-              onChange={(value) => this.setState({ content: value })}
+              onChange={(value) => this.setState({ content: value})}
               className="new-blog-content"
               type="text"
             />

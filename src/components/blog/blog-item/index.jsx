@@ -5,12 +5,14 @@ import { Link } from "react-router-dom";
 import "./styles.css";
 
 export default class BlogItem extends Component {
+
   render() {
+    console.log(this.props)
     const { title, cover, author, _id } = this.props;
     return (
       <Link to={`/blog/${_id}`} className="blog-link">
         <Card className="blog-card">
-          <Card.Img variant="top" src={cover} className="blog-cover" />
+          <Card.Img variant="top" src={this.props.cover} alt="blog-picture" className="blog-cover" />
           <Card.Body>
             <Card.Title>{title}</Card.Title>
           </Card.Body>

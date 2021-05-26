@@ -1,26 +1,43 @@
 import React, { Component } from "react";
-import { Container, Image } from "react-bootstrap";
+import { Container, Image, Button } from "react-bootstrap";
 import { withRouter } from "react-router";
 import BlogAuthor from "../../components/blog/blog-author";
-import posts from "../../data/posts.json";
 import "./styles.css";
 
 class Blog extends Component {
   state = {
-    blog: {},
+    blog: "",
     loading: true,
   };
-  
-  componentDidMount() {
-    const { id } = this.props.match.params;
-    console.log(posts);
-    const blog = posts.find((post) => post._id.toString() === id);
-    if (blog) {
-      this.setState({ blog, loading: false });
-    } else {
-      this.props.history.push("/404");
+
+  componentDidMount = async () => {
+    await this.fetchPost()
+  }
+
+  fetchPost = async () => {
+    try {
+      const id = this.props.match.params.id;
+      console.log(id)
+
+      const resp = await fetch("http://localhost:3001/blogposts/" + id)
+      const data = await resp.json()
+
+      this.setState({ blog: data, loading: false })
+      console.log(this.state.blog)
+    } catch (error) {
+      console.log(error)
     }
   }
+
+  downloadPDF = async () => {
+    try {
+      const response = await fetch("http://localhost:3001/blogposts/downloadPDF/" + this.props.match.params.id)
+      console.log(response)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 
   render() {
     const { loading, blog } = this.state;
@@ -42,7 +59,7 @@ class Blog extends Component {
                 <div>{`${blog.readTime.value} ${blog.readTime.unit} read`}</div>
               </div>
             </div>
-
+            <Button href={`http://localhost:3001/blogposts/downloadPDF/` + this.props.match.params.id}  variant="primary">Download as PDF</Button>
             <div dangerouslySetInnerHTML={{ __html: blog.content }}></div>
           </Container>
         </div>
