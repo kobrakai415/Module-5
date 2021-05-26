@@ -9,17 +9,19 @@ class Blog extends Component {
     blog: "",
     loading: true,
   };
-
+  
+  
   componentDidMount = async () => {
     await this.fetchPost()
   }
 
   fetchPost = async () => {
     try {
+      const apiUrl = process.env.REACT_APP_API_URL
       const id = this.props.match.params.id;
       console.log(id)
 
-      const resp = await fetch("http://localhost:3001/blogposts/" + id)
+      const resp = await fetch(apiUrl + id)
       const data = await resp.json()
 
       this.setState({ blog: data, loading: false })
@@ -31,7 +33,7 @@ class Blog extends Component {
 
   downloadPDF = async () => {
     try {
-      const response = await fetch("http://localhost:3001/blogposts/downloadPDF/" + this.props.match.params.id)
+      const response = await fetch(apiUrl + this.props.match.params.id)
       console.log(response)
     } catch (error) {
       console.log(error)
