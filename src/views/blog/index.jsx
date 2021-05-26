@@ -33,6 +33,7 @@ class Blog extends Component {
 
   downloadPDF = async () => {
     try {
+      const apiUrl = process.env.REACT_APP_API_URL
       const response = await fetch(apiUrl + this.props.match.params.id)
       console.log(response)
     } catch (error) {
