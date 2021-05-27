@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Image } from "react-bootstrap";
+import { Col, Image, Row } from "react-bootstrap";
 import "./styles.css";
 export default class BlogAuthor extends Component {
   render() {
