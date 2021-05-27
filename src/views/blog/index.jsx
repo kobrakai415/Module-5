@@ -21,7 +21,7 @@ class Blog extends Component {
       const id = this.props.match.params.id;
       console.log(id)
 
-      const resp = await fetch(apiUrl + id)
+      const resp = await fetch(`${apiUrl}/blogposts/` + id)
       const data = await resp.json()
 
       this.setState({ blog: data, loading: false })
